@@ -1,0 +1,21 @@
+BotFater
+
+** url
+https://api.telegram.org/bot<token>/METHOD_NAME
+** token
+1836180764:AAEwEgnxdz-edaOpGeFoJiJtYhoGG61JmeY
+** chat_id
+1847018793
+
+2. getMe
+https://api.telegram.org/bot1836180764:AAEwEgnxdz-edaOpGeFoJiJtYhoGG61JmeY/getMe
+
+3. sendMessage
+https://api.telegram.org/bot1836180764:AAEwEgnxdz-edaOpGeFoJiJtYhoGG61JmeY/sendMessage
+ => 실패(chat_id, message 필요)
+
+4. getUpdates
+https://api.telegram.org/bot1836180764:AAEwEgnxdz-edaOpGeFoJiJtYhoGG61JmeY/getUpdates
+
+5. retry sendMessage
+https://api.telegram.org/bot1836180764:AAEwEgnxdz-edaOpGeFoJiJtYhoGG61JmeY/sendMessage?chat_id=1847018793&text=주소로 요청한 메세지 입니다.

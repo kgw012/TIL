@@ -30,6 +30,8 @@ print(median)
 num_len = len(numbers)
 
 median = 0
+min_abs = 100000
+min_abs_num = 0
 for number in numbers:
     count1 = 0
     count2 = 0
@@ -41,7 +43,17 @@ for number in numbers:
     if count1 == count2:
         median = number
         break
+    
+    # 중간값과 같은 숫자가 여러개 있는 경우를 위해,,
+    cnt_abs = abs(count1 - count2)
+    if min_abs > cnt_abs:
+        min_abs = cnt_abs
+        min_abs_num = number
 
+# 중간값과 같은 숫자가 여러개 있는 경우
+else:
+    median = min_abs_num
+    
 print(median)
 
 

@@ -4,7 +4,7 @@ immutable = ['String', 'Tuple', 'Range']
 
 
 # 2. 홀수만 담기
-my_list = list(map(int, range(1, 51)[0:50:2]))
+my_list = list(range(1, 51)[::2])
 print(my_list)
 
 

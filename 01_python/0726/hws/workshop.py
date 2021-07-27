@@ -18,16 +18,23 @@ print(get_dict_avg({
 
 # 2. 혈액형 분류하기
 def count_blood(blood_list):
-    blood_dict = {
-        'A': 0,
-        'B': 0,
-        'O': 0,
-        'AB': 0,
-    }
+    # blood_dict = {
+    #     'A': 0,
+    #     'B': 0,
+    #     'O': 0,
+    #     'AB': 0,
+    # }
+
+    # for blood in blood_list:
+    #     blood_dict[blood] += 1
+    
+    # return blood_dict
+
+    blood_dict = {}
 
     for blood in blood_list:
-        blood_dict[blood] += 1
-    
+        blood_dict[blood] = blood_dict.get(blood, 0) + 1
+
     return blood_dict
 
 print(count_blood([

@@ -1,11 +1,12 @@
 # 1. 평균 점수 구하기
 def get_dict_avg(score_dict):
-    total = 0
+    # total = 0
 
-    for score in score_dict.values():
-        total += score
+    # for score in score_dict.values():
+    #     total += score
     
-    return total / len(score_dict)
+    # return total / len(score_dict)
+    return sum(score_dict.values()) / len(score_dict)
 
 print(get_dict_avg({
     'python': 80,

@@ -1,15 +1,22 @@
 # 1. 무엇이 중복일까
 
 def duplicated_letters(text):
-    result = []
-    for i in text:
-        if i in result:
-            continue
+    # result = []
+    # for i in text:
+    #     if i in result:
+    #         continue
         
-        if text.count(i) > 1:
-            result.append(i)
+    #     if text.count(i) > 1:
+    #         result.append(i)
     
-    return result
+    # return result
+
+    result = set()
+    for char in text:
+        if text.count(char) > 1:
+            result.add(char)
+    
+    return list(result)
 
 print(duplicated_letters('apple'))
 print(duplicated_letters('banana'))

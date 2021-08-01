@@ -1,5 +1,15 @@
 class Dice:
 
+    parse_up_idx = {0:5, 1:3, 2:4, 3:1, 4:2, 5:0}
+    parse_side_list = {
+        0: [1, 2, 3, 4],
+        1: [0, 2, 4, 5],
+        2: [0, 1, 3, 5],
+        3: [0, 2, 4, 5],
+        4: [0, 1, 3, 5],
+        5: [1, 2, 3, 4]
+    }
+
     def __init__(self, num_list, bottom_num):
         self.num_list = num_list
         self.bottom_idx = num_list.index(bottom_num)
@@ -8,18 +18,9 @@ class Dice:
         self.side_max = self.find_side_max()
 
     def matching_dice(self, bottom_idx):
-        up_idx = 0
-        side_idx_list = []
 
-        if bottom_idx == 0 or bottom_idx == 5:
-            up_idx = 5 - bottom_idx
-            side_idx_list = [1, 2, 3, 4]
-        elif bottom_idx == 1 or bottom_idx == 3:
-            up_idx = 4 - bottom_idx
-            side_idx_list = [0, 2, 4, 5]
-        else:
-            up_idx = 6 - bottom_idx
-            side_idx_list = [0, 1, 3, 5]
+        up_idx = self.parse_up_idx[bottom_idx]
+        side_idx_list = self.parse_side_list[bottom_idx]
 
         return up_idx, side_idx_list
 
@@ -65,5 +66,3 @@ for bottom_num in first_num_list:
     total_list.append(total)
 
 print(max(total_list))
-
-

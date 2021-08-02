@@ -1,5 +1,5 @@
 /* test.css */
 
 #ssafy > p:nth-of-type(2){
-  color: red
+  color: blue;
 }

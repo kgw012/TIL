@@ -32,9 +32,12 @@ aside {
 }
 
 /* 2. header, nav, footer 태그의 margin을 4px로 만들어주세요. */
-/* 3. header, nav, footer 태그의 padding을 4px로 만들어주세요. */
-.mar-pad-4 {
+.m-4 {
   margin: 4px;
+}
+
+/* 3. 모든 시멘틱 태그의 padding을 4px로 만들어주세요. */
+.p-4 {
   padding: 4px;
 }
 
@@ -46,11 +49,11 @@ aside {
 
 /* 5. section 태그는 width 490px height 300px, 
    aside 태그는 width 280px height 300px로 만들어주세요.*/
-.section-style {
+section {
   width: 490px;
   height: 300px;
 }
-.aside-style {
+aside {
   width: 280px;
   height: 300px;
 }

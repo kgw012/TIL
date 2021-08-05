@@ -8,27 +8,31 @@
   <title>Homework</title>
 </head>
 <body>
-  <div class="container mt-5">
-    <div class="row py-4">
+  <section class="container mt-5">
+    <!-- 1. button -->
+    <article class="row py-4">
       <h1 class="py-2">1. Components(button)</h1>
-      <div class="d-grid gap-2 col-8 mx-auto">
-        <button type="button" class="btn btn-lg btn-success">Sign in</button>
-      </div>
-    </div>
-    <div class="py-4">
+      <button type="button" class="btn btn-lg btn-success col-8 mx-auto">Sign in</button>
+    </article>
+    <!-- 2. nav-bar -->
+    <article class="py-4">
       <h1 class="py-2">2. Components(nav-bar)</h1>
-      <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container-fluid">
+          <!-- logo -->
           <a class="navbar-brand" href="#">
             <img src="https://edu.#####.com/asset/images/logo.png" alt="" width="30" height="24">
           </a>
+          <!-- toggler -->
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
+          <!-- navbar items -->
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
+              <!-- projects -->
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   프로젝트
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -37,8 +41,9 @@
                   <li><a class="dropdown-item" href="#">프로젝트3</a></li>
                 </ul>
               </li>
+              <!-- groups -->
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   그룹들
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -47,21 +52,25 @@
                   <li><a class="dropdown-item" href="#">그룹3</a></li>
                 </ul>
               </li>
+              <!-- activity -->
               <li class="nav-item">
-                <a class="nav-link" href="#">활동</a>
+                <a class="nav-link text-white" href="#">활동</a>
               </li>
+              <!-- milestone -->
               <li class="nav-item">
-                <a class="nav-link" href="#">마일스톤</a>
+                <a class="nav-link text-white" href="#">마일스톤</a>
               </li>
+              <!-- snippet -->
               <li class="nav-item">
-                <a class="nav-link" href="#">스니펫</a>
+                <a class="nav-link text-white" href="#">스니펫</a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
-    </div>
-    <div class="row py-4">
+    </article>
+    <!-- 3. pagination -->
+    <article class="row py-4">
       <h1 class="py-2">3. Components(pagination)</h1>
       <div class="col-8 mx-auto">
         <nav aria-label="...">
@@ -81,48 +90,59 @@
           </ul>
         </nav>
       </div>
-    </div>
-    <div class="row py-4">
+    </article>
+    <!-- 4. login page -->
+    <article class="row py-4 justify-content-center">
       <h1 class="py-2">4. Login Page</h1>
-      <div class="col-lg-8 mx-auto">
-        <div class="alert alert-danger" role="alert">
+      <div class="col-md-8">
+        <!-- alert -->
+        <div class="alert alert-danger px-4" role="alert">
           Invalid Login or password
         </div>
-        <div class="page-header pb-2">
+        <!-- header -->
+        <header class="page-header pb-2">
           <h1 class="fw-bold">##### 전용 GitLab 시스템</h1>
-        </div>
+        </header>
         <hr>
+        <!-- card -->
         <div class="card">
+          <!-- card-header -->
           <div class="card-header text-center fw-bold py-3 bg-white border-bottom border-primary border-3">
             Sign in
           </div>
-          <div class="row py-4">
-            <div class="col-11 mx-auto">
-              <form>
-                <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label fw-bold">Username or email</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                </div>
-                <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label fw-bold">Password</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1">
-                </div>
-                <div class="mb-3 form-check pb-2">
-                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                  <label class="form-check-label" for="exampleCheck1">Remember me</label>
-                  <div class="float-end"><a href="#" class="text-decoration-none">Forgot your password?<a/></div>
-                </div>
-                <div class="d-grid gap-2 mx-auto">
-                  <button type="submit" class="btn btn-lg btn-success">Sign in</button>
-                </div>
-              </form>
+          <!-- card-form -->
+          <div class="container-fluid">
+            <div class="row py-4 justify-content-center">
+              <div class="col-12">
+                <form>
+                  <!-- email -->
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label fw-bold">Username or email</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  </div>
+                  <!-- password -->
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label fw-bold">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                  </div>
+                  <!-- remember me -->
+                  <div class=" d-flex justify-content-between pb-2">
+                    <div class="mb-3 form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                      <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                    </div>
+                    <a href="#" class="text-decoration-none">Forgot your password?</a>
+                  </div>
+                  <!-- sign in button -->
+                  <button type="submit" class="btn btn-lg btn-success w-100">Sign in</button>
+                </form>
+              </div>
             </div>
-            
           </div>
         </div>
       </div>
-    </div>
-  </div>
+    </article>
+  </section>
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

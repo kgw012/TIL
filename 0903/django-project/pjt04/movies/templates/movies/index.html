@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Index</h1>
+
+{% for movie in movies %}
+<hr>
+  <h3><a href="{% url 'movies:detail' movie.pk %}">{{ movie.title }}</a></h3>
+  {% empty %}
+  <h3>저장된 영화가 없습니다</h3>
+
+{% endfor %}
+{% endblock content %}

@@ -35,6 +35,8 @@ INSTALLED_APPS = [
 
     'bootstrap5',
     'imagekit',
+    'django_cleanup',
+    'django_seed',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -137,3 +139,10 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}

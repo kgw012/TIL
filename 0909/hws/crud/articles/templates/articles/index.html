@@ -10,7 +10,8 @@
   <img src="{% static 'articles/img/회전초밥.gif' %}" alt="회전초밥">
   <h1>Articles</h1>
   [<a href="{% url 'articles:create' %}">CREATE</a>]
-  {% for article in articles %}
+
+  {% comment %} {% for article in articles %}
     <hr>
     {% if article.thumb_img %}
       <img src="{{ article.thumb_img.url }}" alt="{{ article.thumb_img }}">
@@ -23,5 +24,43 @@
     {% empty %}
       <hr>
       <p>작성된 글이 없습니다.</p>
+  {% endfor %} {% endcomment %}
+
+  {% for article in page_obj %}
+    <hr>
+    {% comment %} {% if article.thumb_img %}
+      <img src="{{ article.thumb_img.url }}" alt="{{ article.thumb_img }}">
+    {% endif %} {% endcomment %}
+    <p>글 번호 : {{ article.pk }}</p>
+    <p>글 제목 : {{ article.title }}</p>
+    <p>글 내용 : {{ article.content }}</p>
+    <p>[<a href="{% url 'articles:detail' article.pk %}">DETAIL</a>]</p>
+
+    {% empty %}
+      <hr>
+      <p>작성된 글이 없습니다.</p>
   {% endfor %}
+
+  {% comment %} <div class="pagination">
+    <span class="step-links">
+      {% if page_obj.has_previous %}
+        <a href="?page=1">&laquo; first</a>
+        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+      {% endif %}
+
+      <span class="current">
+        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+      </span>
+
+      {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">next</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+      {% endif %}
+    </span>
+  </div> {% endcomment %}
+
+  {% bootstrap_pagination page_obj pages_to_show=5 %}
+
+  
+
 {% endblock content %}

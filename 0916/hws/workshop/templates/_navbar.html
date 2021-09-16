@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="d-flex">
+    {% if user.is_authenticated %}
+      <p>안녕하세요, {{ request.user }} 님!</p>
+      <a href="{% url 'accounts:update' %}">[회원정보 수정]</a>
+      <a href="{% url 'accounts:chg_pw' %}">[비밀번호 변경]</a>
+      <form action="{% url 'accounts:logout' %}" method="post">
+        {% csrf_token %}
+        <button class="btn btn-secondary">로그아웃</button>
+      </form>
+      <form action="{% url 'accounts:delete' %}" method="post">
+        {% csrf_token %}
+        <button class="btn btn-danger">회원탈퇴</button>
+      </form>
+    {% else %}
+      <a href="{% url 'accounts:login' %}">[로그인]</a>
+      <a href="{% url 'accounts:signup' %}">[회원가입]</a>
+    {% endif %}
+  </div>
+</div>

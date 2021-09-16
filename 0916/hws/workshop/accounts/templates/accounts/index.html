@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>INDEX</h1>
+  <hr>
+  {% for user_item in users %}
+    <p>{{ user_item.username }}</p>
+  {% empty %}
+  <p>등록된 유저가 없습니다.</p>
+  {% endfor %}
+{% endblock content %}

@@ -3,7 +3,7 @@ from django.views.decorators.http import require_http_methods, require_safe, req
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth import update_session_auth_hash
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordChangeForm
 from django.contrib.auth.decorators import login_required
 
@@ -12,6 +12,7 @@ from .forms import CustomUserChangeForm
 
 @require_safe
 def index(request):
+    User = get_user_model()
     users = User.objects.all()
 
     context = {

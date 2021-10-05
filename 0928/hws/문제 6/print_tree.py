@@ -1,6 +1,3 @@
-# 파일을 실행한 후, test_case.txt를 복사해서 터미널에 입력해주시면 됩니다!
-
-
 class Node:
     def __init__(self, idx, value):
         self.idx = idx

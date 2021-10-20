@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>New</h1>
+  <form action="{% url 'todos:create' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">New</button>
+  </form>
+{% endblock content %}

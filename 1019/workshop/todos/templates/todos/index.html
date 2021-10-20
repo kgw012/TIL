@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>INDEX</h1>
+  <p>
+    hi, {{ user.username }}!
+    <form action="{% url 'accounts:logout' %}" method="post">
+      {% csrf_token %}
+      <button type="submit">logout</button>
+    </form>
+  </p>
+  <a href="{% url 'todos:new' %}">NEW</a>
+  <hr>
+  {% for todo in todos %}
+    <title>할 일: {{ todo.title }}</title>
+    <p>작성자: {{ todo.author_id }}</p>
+    <p>완료여부: {{ todo.completed }}</p>
+  {% empty %}
+    <p>등록된 할 일이 없습니다.</p>
+  {% endfor %}
+{% endblock content %}

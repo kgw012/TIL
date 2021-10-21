@@ -17,9 +17,9 @@
     <form action="{% url 'articles:likes' article.pk %}" method="post">
       {% csrf_token %}
       {% if user in article.like_users.all %}
-        <button type="submit" class="btn"><i class="fas fa-heart" style="color: pink" ></i></button>
+        <button type="submit" class="btn"><i class="fas fa-heart" style="color: pink" ></i>{{ article.like_users.all|length }}</button>
       {% else %}
-        <button type="submit" class="btn"><i class="far fa-heart pink" style="color: pink" ></i></button>
+        <button type="submit" class="btn"><i class="far fa-heart pink" style="color: pink" ></i>{{ article.like_users.all|length }}</button>
       {% endif %}
     </form>
     <hr>

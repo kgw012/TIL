@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block content %}
+  {% if user == person %}
+    <h1>내 프로필</h1>
+  {% else %}
+    <h1>{{ person.username }}님의 프로필</h1>
+  {% endif %}
+
+  <div>
+    <div>
+      <p>팔로잉 : {{ person.followings.all|length }}명 / 팔로워 : {{ person.followers.all|length }}명</p>
+    </div>
+    {% if user != person %}
+      <form action="{% url 'accounts:follow' person.pk %}" method="post">
+        {% csrf_token %}
+        {% if user in person.followers.all %}
+          <button type="submit" class='btn btn-danger'>Unfollow</button>
+        {% else %}
+          <button type="submit" class='btn btn-primary'>Follow</button>
+        {% endif %}
+      </form>
+    {% endif %}
+
+    <hr>
+
+    <div>
+      <h5>팔로잉 목록</h5>
+      <ul>
+        {% for following in person.followings.all %}
+          <li><a href="{% url 'accounts:profile' following.username %}">{{ following.username }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div>
+      <h5>팔로워 목록</h5>
+      <ul>
+        {% for follower in person.followers.all %}
+          <li><a href="{% url 'accounts:profile' follower.username %}">{{ follower.username }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <hr>
+  
+  <h2>게시글</h2>
+  {% for article in person.article_set.all %}
+    <div>
+      <a href="{% url 'articles:detail' article.pk %}">{{ article.title }}</a>
+    </div>
+  {% endfor %}
+  
+  <hr>
+
+  <h2>댓글</h2>
+  {% for comment in person.comment_set.all %}
+    <div>
+      <a href="{% url 'articles:detail' comment.article.pk %}">{{ comment.content }}</a>
+    </div>
+  {% endfor %}
+
+  <hr>
+
+  <h2>좋아요</h2>
+  {% for article in person.like_articles.all %}
+    <div>
+      <a href="{% url 'articles:detail' article.pk %}">{{ article.title }}</a>
+    </div>
+  {% endfor %}
+
+  <hr>
+
+  <a href="{% url 'articles:index' %}">back</a>
+{% endblock content %}

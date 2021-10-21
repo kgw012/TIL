@@ -105,7 +105,7 @@ def likes(request, article_pk):
     if request.user.is_authenticated:
         article = get_object_or_404(Article, pk=article_pk)
 
-        if article.like_users.filter(pk=article_pk).exists():
+        if article.like_users.filter(pk=request.user.pk).exists():
            article.like_users.remove(request.user)
         else:
             article.like_users.add(request.user)

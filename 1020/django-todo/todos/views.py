@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
-from .models import Todo
 from .forms import TodoForm
+
 
 def index(request):
     author = request.user

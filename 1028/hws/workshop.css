@@ -1,0 +1,8 @@
+.todo-p {
+  display: inline-block;
+  margin: 5px 5px 5px 0px;
+}
+
+.done {
+  text-decoration: line-through;
+}

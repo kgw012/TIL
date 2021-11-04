@@ -4,16 +4,14 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Workshop</title>
 </head>
 <body>
-  <div id="app-1">
+  <div id="app">
     <h1>점심메뉴</h1>
     <button v-on:click="randomMenu">Pick One</button>
-    <p>{{ menu }}</p>
-  </div>
-  <hr>
-  <div id="app-2">
+    <p>{{ pickedMenu }}</p>
+    <hr>
     <h1>로또</h1>
     <button v-on:click="getLuckyNumbers">Get Lucky Numbers</button>
     <p>{{ numbers }}</p>
@@ -23,32 +21,22 @@
 <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
 <script>
   var app1 = new Vue({
-    el: '#app-1',
+    el: '#app',
     data: {
-      menu: '버튼을 클릭하면 메뉴를 랜덤으로 선택합니다.',
-      menus: ['김밥', '라면', '파스타', '피자', '치킨']
+      menus: ['김밥', '라면', '파스타', '피자', '치킨'],
+      pickedMenu: '',
+      numbers: ''
     },
     methods: {
       randomMenu: function () {
         var random = _.random(this.menus.length - 1)
-        this.menu = this.menus[random]
+        this.pickedMenu = this.menus[random]
+      },
+      getLuckyNumbers: function () {
+        this.numbers = _.map([0, 0, 0, 0, 0, 0], () => _.random(1, 45))
       }
     }
   })
 
-  var app2 = new Vue({
-    el: '#app-2',
-    data: {
-      numbers: [0, 0, 0, 0, 0, 0]
-    },
-    methods: {
-      getLuckyNumbers: function () {
-        function getNum() {
-          return _.random(1, 45)
-        }
-        this.numbers = _.map(this.numbers, getNum)
-      }
-    }
-  })
 </script>
 </html>

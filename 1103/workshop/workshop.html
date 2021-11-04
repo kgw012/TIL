@@ -9,11 +9,11 @@
 <body>
   <div id="app">
     <h1>점심메뉴</h1>
-    <button v-on:click="randomMenu">Pick One</button>
+    <button @click="randomMenu">Pick One</button>
     <p>{{ pickedMenu }}</p>
     <hr>
     <h1>로또</h1>
-    <button v-on:click="getLuckyNumbers">Get Lucky Numbers</button>
+    <button @click="getLuckyNumbers">Get Lucky Numbers</button>
     <p>{{ numbers }}</p>
   </div>
 </body>
@@ -29,11 +29,10 @@
     },
     methods: {
       randomMenu: function () {
-        var random = _.random(this.menus.length - 1)
-        this.pickedMenu = this.menus[random]
+        this.pickedMenu = _.sample(this.menus)
       },
       getLuckyNumbers: function () {
-        this.numbers = _.map([0, 0, 0, 0, 0, 0], () => _.random(1, 45))
+        this.numbers = _.sampleSize(_.range(1, 46), 6)
       }
     }
   })

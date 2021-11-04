@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo workshop</title>
+  <style>
+    .completed {
+      text-decoration-line: line-through;
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <select v-model="status">
+      <option value="all">전체</option>
+      <option value="inProgress">진행중</option>
+      <option value="completed">완료</option>
+    </select>
+    <input type="text" v-model="todo">
+    <button @click="saveTodo">+</button>
+    <ul>
+      <li v-for="todo in filteredList" :key="todo.id">
+        <input type="checkbox" v-model="todo.isCompleted">
+        <span :class="{ 'completed': todo.isCompleted }">{{ todo.content }}</span>
+      </li>
+    </ul>
+    <button @click="deleteCompletedTodos">완료된 할 일 지우기</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    const STORAGE_KEY = 'TODO'
+    const todoStorage = {
+      save: function (todoList) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(todoList))
+      },
+      read: function () {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []
+      }
+    }
+
+    const app = new Vue({
+      el: '#app',
+      data: {
+        todo: '',
+        todoList: todoStorage.read(),
+        status: 'all'
+      },
+      computed: {
+        filteredList: function () {
+          if (this.status === 'all') {
+            return this.todoList
+          } else if (this.status === 'inProgress') {
+            return this.todoList.filter(todo => !todo.isCompleted)
+          } else {
+            return this.todoList.filter(todo => todo.isCompleted)
+          }
+        }
+      },
+      methods: {
+        saveTodo: function () {
+          if (this.todo.length == 0) {
+            alert('todo를 입력해주세요!')
+            return
+          }
+          
+          const todoInstance = {
+            id: Date.now(),
+            isCompleted: false,
+            content: this.todo
+          }
+          this.todoList.push(todoInstance)
+          this.todo = ''
+        },
+
+        deleteCompletedTodos: function () {
+          this.todoList = this.todoList.filter(todo => !todo.isCompleted)
+        }
+      },
+
+      watch: {
+        // deep 옵션 주는 방법
+        todoList: {
+          handler: function () {
+            todoStorage.save(this.todoList)
+          },
+          deep: true
+        }
+        // 옵션 없이 사용하는 방법
+        // todoList: function () {
+        //   localStorage.setItem(STORAGE_KEY, JSON.stringify(this.todoList))
+        // }
+      }
+
+    })
+  </script>
+</body>
+</html>

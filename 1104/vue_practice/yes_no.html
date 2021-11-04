@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YesNo</title>
+</head>
+<body>
+  <div id="app">
+    <h1>Yes? No?</h1>
+    <input v-model.trim="question" type="text">
+    <button @click="getAnswerImg">질문하기</button>
+    <p v-if="answer">Answer : {{ answer }}!!</p>
+    <img v-if="imgSrc" :src="imgSrc" alt="answer img">
+    <br>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    const API_URL = 'https://yesno.wtf/api'
+    const app = new Vue({
+      el: '#app',
+      data: {
+        question: '',
+        answer: '',
+        imgSrc: '',
+      },
+      methods: {
+        getAnswerImg: function () {
+          if (this.question.slice(-1) !== '?') {
+            alert('질문은 물음표로 끝나야 합니다!')
+            return
+          }
+          
+          this.imgSrc = ''
+          axios.get(API_URL)
+            .then(response => {
+              this.answer = response.data.answer.toUpperCase()  
+              this.imgSrc = response.data.image
+              console.log(this.imgSrc)
+            })
+            .catch(err => console.log(err))
+        },
+      },
+    })
+  </script>
+</body>
+</html>

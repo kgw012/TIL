@@ -40,7 +40,7 @@ export default {
     },
     deleteTodo: function (todo) {
       axios({
-        method: 'DELETE',
+        method: 'delete',
         url: `http://127.0.0.1:8000/todos/${todo.id}/`,
       })
         .then(() => {
@@ -57,7 +57,7 @@ export default {
       }
       
       axios({
-        method: 'PUT',
+        method: 'put',
         url: `http://127.0.0.1:8000/todos/${todo.id}/`,
         data: todoItem
       })

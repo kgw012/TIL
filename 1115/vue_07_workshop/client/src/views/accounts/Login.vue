@@ -1,5 +1,14 @@
 <template>
-  <div></div>
+  <div>
+    <div>
+      <label for="username">아이디</label>
+      <input type="text" id="username">
+    </div>
+    <div>
+      <label for="password">비밀번호</label>
+      <input type="password" id="password">
+    </div>
+  </div>
 </template>
 
 <script>

@@ -25,11 +25,11 @@ export default {
         method: 'post',
         url: 'http://127.0.0.1:8000/todos/',
         data: {
-          'title': this.title
+          title: this.title
         }
       })
         .then(() => {
-          this.$router.push('/todos')
+          this.$router.push({ name: 'TodoList'})
         })
         .catch(err => {
           console.log(err)

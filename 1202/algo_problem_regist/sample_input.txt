@@ -1,0 +1,6 @@
+5
+kim
+ssafy
+apple
+banana
+card
